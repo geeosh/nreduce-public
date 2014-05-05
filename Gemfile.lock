@@ -37,9 +37,6 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
-    airbrake (3.1.16)
-      builder
-      multi_json
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     ansi (1.4.3)
@@ -287,6 +284,9 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_admin (0.4.9)
       bootstrap-sass (~> 2.2)
       builder (~> 3.0)
@@ -306,6 +306,8 @@ GEM
       rails (> 3.1)
     rails_config (0.2.5)
       activesupport (>= 3.0)
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.11)
       actionpack (= 3.2.11)
       activesupport (= 3.2.11)
@@ -445,7 +447,6 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 2.3.1)
-  airbrake
   ancestry
   backup (~> 3.0.24)
   better_errors
@@ -484,6 +485,7 @@ DEPENDENCIES
   pg
   progress_bar
   rails (= 3.2.11)
+  rails_12factor
   rails_admin
   rails_autolink
   rails_config (= 0.2.5)

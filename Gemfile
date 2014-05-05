@@ -5,16 +5,12 @@ gem 'rails', '3.2.11'
 
 # postgres client
 gem 'pg'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'jquery-rails'
 gem 'devise', '2.1.0'
 gem 'haml-rails'
 gem 'will_paginate', "~> 3.0"
 gem 'geokit-rails3' # port of rails2 plugin: https://github.com/jlecour/geokit-rails3
-gem "airbrake"
+#gem "airbrake"
 gem "hominid"
 gem "rails_config", "= 0.2.5"
 gem "omniauth", ">= 1.0"
@@ -39,7 +35,6 @@ gem 'rmagick' # image resizing
 gem 'mime-types' # for assigning mime type on upload
 gem 'fog' # S3 upload for carrierwave
 gem 'cancan', '~> 1.6.8'
-
 gem 'sunspot_rails' # for use with solr
 gem 'sunspot_solr' # pre-packaged solr distro for use in dev
 gem 'progress_bar' # shows solr indexing progress
@@ -50,16 +45,10 @@ gem 'rails_autolink'
 gem 'viddler-ruby'
 gem 'vimeo'
 gem "obfuscate_id", :git => 'git://github.com/geeosh/obfuscate_id.git'
-
 gem 'twitter'
 gem 'opentok', '~> 0.0.91' # tokbox gem
 gem 'geoip'
-
-#gem 'pusher'
-#gem 'mechanize'
-
 gem 'remotipart' # ajax file uploads
-
 gem 'twilio-ruby'
 
 group :test, :development do
@@ -101,6 +90,7 @@ end
 
 group :production do
   gem 'thin'
+  gem 'rails_12factor'
 end
 
 # To use ActiveModel has_secure_password
