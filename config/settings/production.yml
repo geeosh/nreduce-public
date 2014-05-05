@@ -1,8 +1,12 @@
-site_url: "http://www.xxxxxx.com"
-email_host: "xxxxxxx.com"
+site_url: <%= ENV['SITE_URL'] || "http://nreduce-josh.herokuapp.com" %>
+email_host: "nreduce.com"
 screenr_recorder_id: 'xxxxxxx'
 
 apis:
+  linkedin:
+    key: <%= ENV['LINKEDIN_API_KEY'] %>
+    secret_key: <%= ENV['LINKEDIN_API_SECRET'] %>
+
   twitter:
     consumer_key: ""
     consumer_secret: ""
