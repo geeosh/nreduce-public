@@ -192,7 +192,8 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.7.7)
-    jwt (0.1.12)
+    jwt (0.1.11)
+      multi_json (>= 1.5)
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -473,6 +474,7 @@ DEPENDENCIES
   hominid
   jquery-rails
   json (~> 1.7.3)
+  jwt (= 0.1.11)
   linkedin (~> 0.3.7)
   mime-types
   obfuscate_id!

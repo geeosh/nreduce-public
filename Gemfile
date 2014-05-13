@@ -19,6 +19,7 @@ gem "omniauth-linkedin"
 gem "linkedin", '~> 0.3.7'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem "paperclip", "~> 3.0"
+gem 'jwt', '0.1.11'
 #gem 'aws-s3'
 #gem 'aws-sdk'
 gem 'formtastic'
