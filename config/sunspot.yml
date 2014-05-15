@@ -6,12 +6,6 @@ development:
     solr_home: solr
     path: /solr/development
 
-production:
-  solr:
-    hostname: localhost
-    port: 8683
-    log_level: WARNING
-
 test:
   solr:
     hostname: localhost
