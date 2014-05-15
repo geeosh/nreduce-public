@@ -71,8 +71,11 @@ Nreduce::Application.configure do
 
   config.action_mailer.default_url_options = { :host => "nreduce.com" }
 
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[nReduce Exception] ",
-    :sender_address => %{"notifications" <notifications@nreduce.com>},
-    :exception_recipients => %w{josh@nreduce.com}
 end
+
+Whatever::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[nReduce Error] ",
+    :sender_address => %{"nReduce" <notifier@nreduce.com>},
+    :exception_recipients => %w{josh@nreduce.com}
+  }
