@@ -10,9 +10,10 @@
 
         .examples
           %b Example Goals:
-          %p Talk to 5 Users, Build Sign Up Flow, Close Seed Round
+          - Settings.weekly_goal_samples.each do |g|
+            %br/
+            &#9679; #{g}
         = f.submit 'Set Goal & Enter', :class => 'btn btn-large btn-success'
 
-        .graysmaltext Setting Weekly Goals Helps Maintain Productivity
     = javascript_tag "$(function(){ $('#checkin_goal').modal();  });"
 

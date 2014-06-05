@@ -11,7 +11,7 @@
         - startup.team_members.shuffle.first(3).each do |tm|
           .team_member.left= image_tag tm.pic_url(:small)
       .left.goal_details
-        .week Goal For Week Of #{current_checkin.time_label}:
+        .week Your Goal For Week Of #{current_checkin.time_label}:
         .goal #{current_checkin.goal}
       .clear
       .timeline

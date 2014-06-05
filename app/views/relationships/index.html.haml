@@ -10,7 +10,7 @@
   .row
     .wkrheader
       .span6
-        .wkrtitle Your Group
+        .wkrtitle Project Check-ins
         %hr/
         .feed
           - @startups.each do |s|
@@ -75,48 +75,49 @@
                         more
                     .clear
                 .clear
-      .span6
-        .left.wkrtitle The Help Exchange
-        .right.askbutton= link_to 'Ask For Help', new_request_path, :class => 'btn btn-large btn-success'
-        .right
-          .coinlabel
-            Your Team's Coins
-          .right.bigcoin= image_tag "headercoin.png"
-          .right.bigcount.account_balance= current_user.startup.balance
-          .clear
-        .clear
-        %hr/
-        .helpexchange
-          .columnTitles
-            .left
-              %p Type
-            .left 
-              %p Asker
-            .left
-              %p Helper
-            .left 
-              %p Earn
+      - if 1 == 2
+        .span6
+          .left.wkrtitle The Help Exchange
+          .right.askbutton= link_to 'Ask For Help', new_request_path, :class => 'btn btn-large btn-success'
+          .right
+            .coinlabel
+              Your Team's Coins
+            .right.bigcoin= image_tag "headercoin.png"
+            .right.bigcount.account_balance= current_user.startup.balance
             .clear
+          .clear
           %hr/
+          .helpexchange
+            .columnTitles
+              .left
+                %p Type
+              .left 
+                %p Asker
+              .left
+                %p Helper
+              .left 
+                %p Earn
+              .clear
+            %hr/
 
-          - if @earn_message == true
-            .alert.alert-success
-              %a{:class => "close", :href => "#", "data-dismiss" => "alert"} x
-              %p You earn coins by helping out other nReduce startups complete tasks that are posted here.  Each task states the amount of coins that you will earn by doing it. If you click "Retweet" you will retweet what the requesting team posted.  Then you will immediately receive the stated amount of coins.
+            - if @earn_message == true
+              .alert.alert-success
+                %a{:class => "close", :href => "#", "data-dismiss" => "alert"} x
+                %p You earn coins by helping out other nReduce startups complete tasks that are posted here.  Each task states the amount of coins that you will earn by doing it. If you click "Retweet" you will retweet what the requesting team posted.  Then you will immediately receive the stated amount of coins.
 
-          - if @users_requests.present?
-            .taskheader Tasks You Posted
-            = render 'requests/list', :requests => @users_requests, :owner => true, :limit => 2
+            - if @users_requests.present?
+              .taskheader Tasks You Posted
+              = render 'requests/list', :requests => @users_requests, :owner => true, :limit => 2
 
-          - if @available_requests.present?
-            .taskheader All Available Tasks
-            = render 'requests/list', :requests => @available_requests
+            - if @available_requests.present?
+              .taskheader All Available Tasks
+              = render 'requests/list', :requests => @available_requests
 
-          - if @response.present?
-            .response
-              = render 'responses/success_modal'
-            :javascript
-              $(function(){ $('.success_modal').modal(); });
+            - if @response.present?
+              .response
+                = render 'responses/success_modal'
+              :javascript
+                $(function(){ $('.success_modal').modal(); });
 
   - if @show_mentor_message
     %hr{:style => 'margin: 20px 0 20px 0;'}

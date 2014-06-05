@@ -4,16 +4,14 @@
       .span8.offset1
         = form_tag search_startups_path do
           .left
-            %h4 Search Startups by
+            %h4 Search Projects by
           .left
-            = select_tag 'search[search_type]', options_for_select([['Location', 'location'], ['Founder Name', 'founder_name'], ['Startup Name', 'startup_name']], @search[:search_type])
+            = select_tag 'search[search_type]', options_for_select([['Location', 'location'], ['Person', 'founder_name'], ['Project Name', 'startup_name']], @search[:search_type])
             = text_field_tag 'search[query]', @search[:query]
             = submit_tag 'Search', :class => 'btn'
           .clear
       .span1.center
         .legend Community Rating
-      .span1.center
-        .legend Weeks Worked
     %hr/
     .row
       .span2
@@ -40,7 +38,7 @@
                 - startup.team_members.each do |tm|
                   .left= link_to image_tag(user_avatar_url(tm), :style => 'width: 50px; height: 50px', :title => tm.name), tm
                 .clear
-            .span5
+            .span6
               %p.location
                 - industry_list = startup.cached_industry_list
                 - if location.present?
@@ -50,10 +48,6 @@
                 - if industry_list.present?
                   = industry_list.split(',').first(3).join(',')
               %p.one_liner= startup.one_liner
-            .span1
-              .rating.center
-                - if startup.rating.present?
-                  %h4= startup.rating.round(2)
             .span1
               .weeks_worked.center
                 - if @num_checkins_by_startup[startup.id].present?

@@ -147,3 +147,7 @@ paperclip_config:
   styles:
     medium: '250x250>'
     thumb: '120x120#'
+
+weekly_goal_samples:
+  - 'Work on recruitment strategy: recruit 20 teens this week.'
+  - 'Complete curriculum module for maker event.'
