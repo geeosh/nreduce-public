@@ -6,7 +6,7 @@
       .span5.well
         .row{:style => 'margin-top: 10px'}
           .center
-            %h1{:style => 'font-size:40px; color:#999999; padding-left:45px'} Join nReduce
+            %h1{:style => 'font-size:40px; color:#999999; padding-left:45px'} Create an Account
           %br
         %hr
         %br
@@ -20,10 +20,10 @@
             %a.btn.btn-large{:href => '/auth/linkedin'}
               = image_tag('linkedin_32.png')
               Join With LinkedIn
-          %div{:style => 'padding-top:20px'}
-            %a.btn.btn-large{:href => '/auth/twitter'}
-              = image_tag('twitter_32.png')
-              Join With Twitter
+          / %div{:style => 'padding-top:20px'}
+          /   %a.btn.btn-large{:href => '/auth/twitter'}
+          /     = image_tag('twitter_32.png')
+          /     Join With Twitter
         %div{:style => 'padding-top:20px'}
           %p Already have an account?
           %p{:style => 'padding-left:twitter_320px'}= link_to 'Sign In', new_session_path(:user) + '?s=1'

@@ -4,7 +4,17 @@
       %p &nbsp;
     .span6.well
       .center
-        %h2 Sign in
+        %h2 Login
+
+      .center.social_login
+        %a.btn{:href => '/auth/linkedin'}
+          = image_tag('linkedin_32.png')
+          Login With LinkedIn
+        / %a.btn{:href => '/auth/twitter'}
+        /   = image_tag('twitter_32.png')
+        /   Sign In With Twitter
+      %br/
+
       = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal' }) do |f|
         .control-group
           = f.label :email, :class => 'control-label'
@@ -19,15 +29,7 @@
                 .left.label_tag= f.label :remember_me
                 .clear
         .center= f.submit "Sign in", :class => 'btn btn-large btn-info'
-      .center.social_login
-        %a.btn{:href => '/auth/linkedin'}
-          = image_tag('linkedin_32.png')
-          Sign In With LinkedIn
-        %a.btn{:href => '/auth/twitter'}
-          = image_tag('twitter_32.png')
-          Sign In With Twitter
-      %br/
 
       %p.center.forgot_password= link_to "Forgot your password?", new_password_path(resource_name)
 
-  %p.center= link_to 'Join with your email', sign_up_path
+  %p.center= link_to 'Not registered yet? Sign up', sign_up_path

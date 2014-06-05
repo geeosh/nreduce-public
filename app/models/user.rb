@@ -129,12 +129,12 @@ class User < ActiveRecord::Base
     {
       :docheckin => 'Reminder to check-in',
       :comment => 'New comment',
-      :meeting => 'Meeting reminder',
-      :checkin => 'New checkin',
+      #:meeting => 'Meeting reminder',
+      :checkin => 'A connection posts a checkin',
       :relationship => 'Connection requests',
-      :new_comment_for_post => 'New comment on your post',
-      :message => 'New private message',
-      :response_completed => 'Help request completed'
+      #:new_comment_for_post => 'New comment on your post',
+      :message => 'New message'
+      #:response_completed => 'Help request completed'
     }
   end
 

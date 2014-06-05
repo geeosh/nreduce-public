@@ -72,7 +72,7 @@
       = f.semantic_errors :intro_video_url
       %p.help-block Unlisted Youtube URL
 
-- if @user.entrepreneur? and show_user_field?(:meeting_id)
+- if 1 == 2 # @user.entrepreneur? and show_user_field?(:meeting_id)
   .control-group{error_css(@user, :meeting_id)}
     = f.label :meeting_id, "Your Meeting", :class => 'control-label'
     .controls
@@ -105,12 +105,12 @@
       %h4
         %small Me, elsewhere:
 
-- if show_user_field?(:blog_url)
-  .control-group{error_css(@user, :blog_url)}
-    = f.label :blog_url, :class => 'control-label'
-    .controls
-      = f.text_field :blog_url, :class => "span3"
-      = f.semantic_errors :blog_url
+/ - if show_user_field?(:blog_url)
+/   .control-group{error_css(@user, :blog_url)}
+/     = f.label :blog_url, :class => 'control-label'
+/     .controls
+/       = f.text_field :blog_url, :class => "span3"
+/       = f.semantic_errors :blog_url
 
 - if show_user_field?(:twitter)
   .control-group{error_css(@user, :blog_url)}
@@ -135,19 +135,19 @@
       = f.text_field :linkedin_url, :class => "span3"
       = f.semantic_errors :linkedin_url
 
-- if show_user_field?(:github_url)
-  .control-group{error_css(@user, :github_url)}
-    = f.label :github_url, :class => 'control-label'
-    .controls
-      = f.text_field :github_url, :class => "span3"
-      = f.semantic_errors :github_url
+/ - if show_user_field?(:github_url)
+/   .control-group{error_css(@user, :github_url)}
+/     = f.label :github_url, :class => 'control-label'
+/     .controls
+/       = f.text_field :github_url, :class => "span3"
+/       = f.semantic_errors :github_url
 
-- if show_user_field?(:dribbble_url)
-  .control-group{error_css(@user, :dribbble_url)}
-    = f.label :dribbble_url, :class => 'control-label'
-    .controls
-      = f.text_field :dribbble_url, :class => "span3"
-      = f.semantic_errors :dribbble_url
+/ - if show_user_field?(:dribbble_url)
+/   .control-group{error_css(@user, :dribbble_url)}
+/     = f.label :dribbble_url, :class => 'control-label'
+/     .controls
+/       = f.text_field :dribbble_url, :class => "span3"
+/       = f.semantic_errors :dribbble_url
 
 .form.center{:style => 'margin-bottom: 40px; padding-top: 20px'}
   = f.submit('Save Profile', :class => "btn btn-success btn-large")

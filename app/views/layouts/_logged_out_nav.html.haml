@@ -1,9 +1,11 @@
 - hide_nav ||= false
 .nav
   .row
-    .span2= link_to image_tag('nreduce_logo.png'), (@demo_day.present? ? '/d' : "/")
+    .span3
+      = link_to image_tag('hive.jpg'), '/'
+      %span{:style => 'font-size: 24px; line-height: 24px; font-weight: bold'} Checkins
     - if @demo_day && !@home
-      .span4.countdown_and_checkin{:align => 'center'}
+      .span3.countdown_and_checkin{:align => 'center'}
         - if @demo_day && !@home
           - if @demo_day.in_the_future?
             %p Demo Day Starts In
@@ -17,7 +19,7 @@
               ends in
             = render 'layouts/countdown', :time => @demo_day.ends_at
     - else
-      .span4
+      .span2
         %p
     .span6
       .right{:style => 'margin-top: 15px;'}

@@ -22,7 +22,7 @@ class PagesController < ApplicationController
       return
     end
 
-    render :action => "home_a"
+    render :action => "cloud_eagle"
   end
 
   def community_guidelines

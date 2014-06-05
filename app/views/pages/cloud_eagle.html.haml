@@ -1,0 +1,21 @@
+.home_page
+  .row{:style => 'padding-bottom:0px'}
+    .span12.background-field{:align => 'center'}
+      .row
+        .span6{:style => 'text-align:left; padding-left:20px'}
+          %b{:style => 'font-size:40px; color:#25A6E9; line-height:45px; padding-top:20px'} Easy Collaboration
+          %br/
+          %h2{:style => 'font-size:24px; line-height: 30px;'} Record weekly video checkins, to create project documentation, get just-in-time feedback and support from collaborators.
+          %h2
+
+          %br/
+          %br/
+          %br/
+        .span5.well{:style => 'padding-left:20px;text-align:center;'}
+          .row{:style => 'padding-top:40px'}
+            %span.enter_button= link_to "Join Now".html_safe, sign_up_path, :class => 'btn btn-large btn-success', :style => 'font-size:30px; line-height: 30px'
+            &nbsp;&nbsp;
+            = link_to "Learn More", why_join_path, :style => 'font-size:24px; color: #999999; text-decoration: underline;'
+            .clear
+            %br/
+            %br/
