@@ -39,11 +39,11 @@ a {
   }
   .content {
     color: #585858;
-    font-size: 1.4em;
+    font-size: 16px;
     padding-top: 5px;
-    line-height:150%;
+    line-height:120%;
     p { width: 780px; }
-    textarea { width: 675px; }
+    textarea { width: 400px; }
   }
   .pic {
     width: 100px;
@@ -61,8 +61,9 @@ a {
     padding: 12px 0 12px 0;
   }
   textarea {
-    font-size: 1.1em;
-    line-height: 1.1em;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 8px;
   }
 }
 

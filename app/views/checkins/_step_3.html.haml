@@ -6,7 +6,10 @@
     .controls
       = f.text_field :next_week_goal, :style => 'height: 30px; line-height:24px; font-size:22px', :class => "span6 checkin_start_focus", :placeholder => "Enter goal here...", :maxlength => 100
       = f.semantic_errors :next_week_goal
-    %p{:style => 'padding-top:30px;'} Example Goals:  Talk to 5 Customers, Improve Sign Up UX, Close Angel Round
+    %p{:style => 'padding-top:30px;'}
+      Example Goals:
+      - Settings.weekly_goal_samples.each do |g|
+        %p= g
 
   - if @startup.checkin_day.blank? || @startup.time_zone.blank?
     .checkin_day_and_time_zone

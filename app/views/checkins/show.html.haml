@@ -8,7 +8,7 @@
     .team_and_nav
       .row
         .span3
-          .all_teams= link_to '<i class="icon icon-chevron-left"></i> All Teams'.html_safe, relationships_path, :class => 'btn'
+          .all_teams= link_to '<i class="icon icon-chevron-left"></i> All Projects'.html_safe, relationships_path, :class => 'btn'
         .span8
           .left.team_members
             %p Weekly Progress Update  
@@ -19,7 +19,7 @@
               .inline-block{:style => 'margin-left: 0px'}= link_to(image_tag(user_avatar_url(tm), :title => title, :style => 'width: 50px; height: 50px;'), user_path(tm))
           .left
             %h4.name_and_link
-              = link_to "Team #{@checkin.startup.name}", startup_path(@checkin.startup)
+              = link_to @checkin.startup.name, startup_path(@checkin.startup)
               - if @checkin.startup.website_url.present? && @checkin.startup.website_url_to_uri.present?
                 &nbsp;•&nbsp;
                 = link_to_external @checkin.startup.website_url_to_uri.hostname, @checkin.startup.website_url, :source => 'checkin'

@@ -2,11 +2,11 @@ class CheckinsController < ApplicationController
   around_filter :record_user_action, :only => [:show, :create, :first]
   before_filter :login_required
   before_filter :load_requested_or_users_startup
-  load_and_authorize_resource :startup, :except => [:first]
   before_filter :load_latest_checkin, :only => :show
   before_filter :load_current_checkin, :only => :new
   before_filter :load_obfuscated_checkin, :only => [:show, :edit, :update]
   load_and_authorize_resource :checkin
+  #load_and_authorize_resource :startup, :except => [:first], :through => :checkin
 
   def index
     @checkins = @startup.checkins

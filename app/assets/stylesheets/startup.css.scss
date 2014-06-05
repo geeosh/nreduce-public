@@ -77,13 +77,13 @@
 .countdown_separator {
   height: 1px;
   padding-top: 12px;
-  margin: 0 -30px 8px -30px;
+  margin: 0 0px 8px 0px;
   border-bottom: 2px solid #efefef;
 }
 .countdown {
   overflow-x: hidden;
-  width: 1097px;
-  margin-left: 35px;
+  width: 100%;
+  margin-left: 10px;
   position: relative;
   .week {
     margin-bottom: 5px;
@@ -133,7 +133,6 @@
         top: 0;
         left: 0;
         li.day {
-          width: 155px;
           a { text-align: center; }
         }
         li.past {
@@ -179,6 +178,8 @@
           line-height: 1.6em;
           width: 138px;
           white-space: nowrap;
+          padding-left: 11px;
+          padding-right: 11px;
         }
         .disabled {
           opacity: 1;

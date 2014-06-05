@@ -34,7 +34,8 @@ class Ability
 
         # Can edit a checkin if in the before/after time window and they own it
         can [:edit, :update], Checkin do |checkin|
-          Checkin.in_time_window?(user.startup.checkin_offset) && (checkin.startup_id == user.startup_id)
+          #Checkin.in_time_window?(user.startup.checkin_offset) && 
+          (checkin.startup_id == user.startup_id)
         end
 
         can :first, Checkin if !user.account_setup?
