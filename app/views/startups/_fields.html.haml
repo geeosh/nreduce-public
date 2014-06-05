@@ -1,28 +1,85 @@
 - hide_screenshots ||= false
 .control-group{error_css(@startup, :name)}
-  = f.label :name, "Startup Name", :class => 'control-label'
+  = f.label :name, "Project Name", :class => 'control-label'
   .controls
     = f.text_field :name, :class => "span3"
     = f.semantic_errors :name
 
+.control-group{error_css(@startup, :industry_list)}
+  = f.label :industry_list, "Tags", :class => 'control-label'
+  .controls
+    = text_field_tag 'startup[industry_list]', @startup.industry_list.map{|i| i.titleize }.join(', '), :class => 'span4 industries_list_autocomplete', :placeholder => 'ex: art, science'
+    = f.semantic_errors :industry_list
+    %p.help-block List at least one tag to help people find your project
+
+.control-group{error_css(@startup, :elevator_pitch)}
+  = f.label :elevator_pitch, 'Description', :class => 'control-label'
+  .controls
+    = f.text_area :elevator_pitch, :size => '80x4', :class => "span4"
+    = f.semantic_errors :elevator_pitch
+
+.control-group{error_css(@startup, :website_url)}
+  = f.label :website_url, "Website", :class => 'control-label'
+  .controls
+    = f.text_field :website_url, :class => 'span3 with-placeholder'
+    = f.semantic_errors :website_url
+    %span.help-inline.help-danger Optional
+
+
+.control-group{error_css(@startup, :logo)}
+  = f.label :logo, 'Logo', :class => 'control-label'
+  .controls
+    = f.file_field :logo
+    = f.hidden_field :logo_cache
+    = f.semantic_errors :logo
+    - if @startup.logo?
+      .div{:style => 'margin-top: 10px'}
+        %br/
+        Current Image:
+        = image_tag(@startup.logo_url(:small))
+        &nbsp;
+        = f.check_box :remove_logo
+        Remove logo
+    - else
+      %p Optional
+
+- unless @setup
+  .control-group{error_css(@startup, :pitch_video_url)}
+    = f.label :pitch_video_url, 'Project Video', :class => 'control-label'
+    .controls
+      = f.text_field :pitch_video_url, :class => 'span4 with-placeholder', :placeholder => 'http://www.youtube.com/watch?v=088YM4pB9lM'
+      = f.semantic_errors :pitch_video_url
+      %span.help-inline.help-danger
+        Upload a 2 minute video to Youtube about your project.
+        %br/
+        Set it as unlisted but allow it to be embedded.
+        %br/
+        Potential students will watch it to see what the project is about.
+  / .control-group{error_css(@startup, :founding_date)}
+  /   = f.label :founding_date, "Founding Date", :class => 'control-label'
+  /   .controls
+  /     = f.date_select :founding_date, {:include_blank => true, :end_year => Time.now.year, :use_short_month => true, :order => [:month, :day, :year] }, {:class => 'founding_date'}
+
 - unless @startup.new_record?
   .control-group
-    = f.label :team_size, "Team Members", :class => 'control-label'
+    = f.label :team_size, "Project Collaborators", :class => 'control-label'
     .controls
       %ul
       - @startup.team_members.order(:name).each do |u|
         %li
           = link_to u.name, u
-          &nbsp;
-          = link_to '<i class="icon icon-remove"></i>'.html_safe, remove_team_member_startup_path(:user_id => u.id), :method => :post, :confirm => "Are you sure you want to remove #{u.name}?"
+          - unless u.id == current_user.id
+            &nbsp;
+            = link_to '<i class="icon icon-remove"></i>'.html_safe, remove_team_member_startup_path(:user_id => u.id), :method => :post, :confirm => "Are you sure you want to remove #{u.name}?"
 
-  .control-group
-    = label_tag 'Pending Invites', 'Pending Invites', :class => 'control-label'
-    .controls
-      - pending_invites = @startup.invites.not_accepted.ordered.all
-      .pending_invites
-        - pending_invites.each do |invite|
-          = render 'startups/pending_invite', :invite => invite
+  - pending_invites = @startup.invites.not_accepted.ordered.all
+  - if pending_invites.size > 0
+    .control-group
+      = label_tag 'Pending Invites', 'Pending Invites', :class => 'control-label'
+      .controls
+        .pending_invites
+          - pending_invites.each do |invite|
+            = render 'startups/pending_invite', :invite => invite
 
   .control-group{:style => 'margin-bottom: 10px'}
     = label_tag 'Invite', 'Invite People', :class => 'control-label'
@@ -44,69 +101,9 @@
               .clear
             = i.text_field :email, :placeholder => 'email address', :class => 'span2 startup_invite email'
             = link_to '<i class="icon-user"></i> Add'.html_safe, '#', :class => 'btn startup_invite_btn'
-            %a{:href => '#', :rel => 'tooltip', :title => 'Team members will get full access to post and view checkins, and participate in nReduce. Mentors and investors will be able to view and comment on all of your checkins.'}
+            %a{:href => '#', :rel => 'tooltip', :title => 'Team members will get full access to post and view checkins. Mentors will be able to view and comment on all of your checkins.'}
               %i.icon-question-sign
 
-.control-group{error_css(@startup, :one_liner)}
-  = f.label :one_liner, :class => 'control-label'
-  .controls
-    = f.text_field :one_liner, :class => "span3 with-placeholder", :placeholder => "ex: Facebook for Kittens"
-    = f.semantic_errors :one_liner
-
-.control-group{error_css(@startup, :elevator_pitch)}
-  = f.label :elevator_pitch, :class => 'control-label'
-  .controls
-    = f.text_area :elevator_pitch, :size => '80x4', :class => "span4"
-    = f.semantic_errors :elevator_pitch
-
-.control-group{error_css(@startup, :website_url)}
-  = f.label :website_url, "Website", :class => 'control-label'
-  .controls
-    = f.text_field :website_url, :class => 'span3 with-placeholder'
-    = f.semantic_errors :website_url
-    %span.help-inline.help-danger Optional
-
-.control-group{error_css(@startup, :logo)}
-  = f.label :logo, 'Logo', :class => 'control-label'
-  .controls
-    = f.file_field :logo
-    = f.hidden_field :logo_cache
-    = f.semantic_errors :logo
-    - if @startup.logo?
-      .div{:style => 'margin-top: 10px'}
-        %br/
-        Current Image:
-        = image_tag(@startup.logo_url(:small))
-        &nbsp;
-        = f.check_box :remove_logo
-        Remove logo
-    - else
-      %p Optional
-.control-group{error_css(@startup, :industry_list)}
-  = f.label :industry_list, "Market(s)", :class => 'control-label'
-  .controls
-    = text_field_tag 'startup[industry_list]', @startup.industry_list.map{|i| i.titleize }.join(', '), :class => 'span4 industries_list_autocomplete', :placeholder => 'ex: mobile games, education'
-    = f.semantic_errors :industry_list
-    %p.help-block List at least one market that your startup is in
-
-- unless @setup
-  .control-group{error_css(@startup, :business_model)}
-    = f.label :business_model, "Business Model", :class => 'control-label'
-    .controls
-      = f.text_area :business_model, :size => '80x5', :style => 'width: 350px; height: 100px;'
-  .control-group{error_css(@startup, :pitch_video_url)}
-    = f.label :pitch_video_url, :class => 'control-label'
-    .controls
-      = f.text_field :pitch_video_url, :class => 'span4 with-placeholder', :placeholder => 'http://www.youtube.com/watch?v=088YM4pB9lM'
-      = f.semantic_errors :pitch_video_url
-      %span.help-inline.help-danger
-        Upload a 2 minute video to Youtube of your startup's pitch.
-        %br/
-        Set it as unlisted but allow it to be embedded.
-  .control-group{error_css(@startup, :founding_date)}
-    = f.label :founding_date, "Founding Date", :class => 'control-label'
-    .controls
-      = f.date_select :founding_date, {:include_blank => true, :end_year => Time.now.year, :use_short_month => true, :order => [:month, :day, :year] }, {:class => 'founding_date'}
 
 - unless 1 == 1 #@startup.new_record? || hide_screenshots
   %hr/

@@ -36,7 +36,7 @@ class Invite < ActiveRecord::Base
 
   # Not adding nReduce types because it isn't allowed in user-selectable options
   def self.available_types
-    {TEAM_MEMBER => 'Team Member', MENTOR => 'Mentor', INVESTOR => 'Investor'}
+    {TEAM_MEMBER => 'Team Member', MENTOR => 'Mentor' } #, INVESTOR => 'Investor'}
   end
 
   def self.types

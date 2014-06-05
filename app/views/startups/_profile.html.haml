@@ -5,7 +5,7 @@
     = image_tag @startup.logo_url(:lg_square), :width => 400, :height => 400
   .span5{:style => 'margin-left: -35px'}
     %p
-      %small Startup:
+      %small Project:
     %h1{:style => 'font-size: 50px'}= h(@startup.name)
     - unless @startup.one_liner.blank?
       %p{:style => 'padding-top: 20px'}
@@ -17,7 +17,7 @@
         %small Website:
       %h3= link_to_external @startup.website_url_to_uri.hostname, @startup.website_url, :source => 'profile'
     %p{:style => 'padding-top: 20px'}
-      %small Industry:
+      %small Tags:
     %h3 #{h(@startup.industry_list)}
   .span2
     .greylink
@@ -44,13 +44,13 @@
     .elevator_pitch
       - unless @startup.elevator_pitch.blank?
         %p
-          %small Elevator Pitch:
+          %small Description:
         %h4= simple_format(h(@startup.elevator_pitch))
 
 .row
   .span12
     %h4
-      %small Team #{h(@startup.name)}
+      %small Project #{h(@startup.name)}
     %br
     = render 'startups/team_members', :team_members => @startup.team_members, :add_team_member => user_signed_in? && (@startup.id == current_user.startup_id ? true : false)
 

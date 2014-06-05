@@ -8,14 +8,12 @@
       %h4= link_to team_member.name, team_member
       %p
         %small
-          Skills: #{team_member.skill_list}
-          %br/
-          Located: #{team_member.location}
+          #{team_member.location}
 - if add_team_member
   .left
     .span1{:align => 'right', :style => 'margin-left: 0'}= link_to image_tag('adduser.png'), edit_startup_path(current_user.startup)
     .span2
       %h4= link_to 'Invite to Team', edit_startup_path(current_user.startup)
       %p
-        %small Add team members to your startup
+        %small Add collaborators to your project
 .clear

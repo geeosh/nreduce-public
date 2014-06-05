@@ -3,7 +3,7 @@
 - unless investor_view
   .row
     .span12{:align => 'center'}
-      %h2{:style => 'padding-top: 40px'} Team #{h(@startup.name).possessive} Progress
+      %h2{:style => 'padding-top: 40px'} Project #{h(@startup.name).possessive} Progress
       %hr
       %br
       - if @checkins.size == 0
@@ -18,15 +18,6 @@
       %p= simple_format(truncate(h(c.goal), :length => 150))
     .span3
       %p
-        %small Before Video:
-      = display_checkin_video(c, :before_video, false, 250, 188).html_safe
-      / - if c.start_video_url.blank?
-      /   = image_tag('novideo_s.png')
-      / - else
-      /   %iframe{:width => 250, :height => 188, :src => Youtube.embed_url(c.start_video_url), :frameborder => 0, :allowfullscreen => true}
-    .span3
-      %p
-        %small After Video:
       = display_checkin_video(c, :video, false, 250, 188).html_safe
       / - if c.end_video_url.blank?
       /   = image_tag('novideo_s.png')
