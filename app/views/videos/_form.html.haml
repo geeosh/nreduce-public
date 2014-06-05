@@ -22,10 +22,10 @@
     = f.hidden_field :remote_image_url, :class => 'video_remote_image_url'
     = f.hidden_field :external_url, :class => 'video_external_url'
     .video_embed_buttons{:class => show_video_type.present? ? 'hide' : ''}
-      %h3 Upload a video documenting your work for the week.
+      %h3 Post a video documenting your work for the week.
       .button{'data-embed-class' => 'youtube_embed', 'data-video-id' => video_id}
         = image_tag 'youtube_icon.png', :style => 'width: 60px; height: 24px;'
-        Upload a Video Via YouTube
+        Post a Video Via YouTube
       / .button{'data-embed-class' => 'screenr_embed', 'data-video-id' => video_id}
       /   = image_tag 'screen_icon.png', :style => 'width: 26px; height: 24px; margin-right: 10px;'
       /   Record Screencast
@@ -47,9 +47,9 @@
       = f.semantic_errors :youtube_url
       .instructions
         %br/
-        %p How to Upload Your Video Via Youtube?
-        %p 1) Upload your video to Youtube
-        %p 2) Set the videos Privacy Settings to "Unlisted"
+        %p How to upload your video to Youtube:
+        %p 1) Upload your video to Youtube - #{link_to('on the web', 'https://www.youtube.com/upload', :parent => '_blank')} or using your phone.
+        %p 2) Set the video's privacy settings to "unlisted".
         %p 3) Copy the URL and enter it below.
         %p (We will import the video into our system so that it is secure)
         %br/

@@ -58,7 +58,7 @@
   = f.fields_for :startup do |s|
     = s.hidden_field :in_signup_flow
     .control-group{error_css(s.object, :name)}
-      = s.label :name, 'Organization', :class => 'control-label'
+      = s.label :name, 'Your Project', :class => 'control-label'
       .controls
         = s.text_field :name
         = s.semantic_errors :name
