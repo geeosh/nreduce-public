@@ -25,7 +25,8 @@ class RelationshipsController < ApplicationController
     end
       
     # Add nReduce for everyone to see
-    startup_ids << Startup.nreduce_id
+    #startup_ids << Startup.nreduce_id
+    startup_ids << current_user.startup.id if current_user.startup.present?
 
     # Load startups
     @startups = Startup.where(:id => startup_ids).all
