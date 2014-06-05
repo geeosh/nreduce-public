@@ -1,6 +1,6 @@
 = div_for(conversation) do
   .head
-    %h5 #{conversation.participants(current_user.id).map{|u| u.name }.to_sentence}
+    %h5{:style => 'font-size: 20px; font-weight: bold'} #{conversation.participants(current_user.id).map{|u| u.name }.to_sentence}
 
   .messages_wrapper
     .messages

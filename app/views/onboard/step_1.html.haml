@@ -6,37 +6,15 @@
       %p
     .span6
       .center
-        .title Welcome to nReduce!
+        .title Welcome, #{current_user.first_name}
     .span3
       .button{:align => 'right'}
         = render 'onboard/buttons'
 
-  .row{:style => 'padding-top: 20px; padding-bottom:0px'}
+  .row{:style => 'padding-top: 20px; padding-bottom:200px'}
     .span1
       %p
     .span10
-
       %h2 We are going to take you on a quick tour!
-      %br/
-      %br/
-      %b{:style => 'font-size:80px; color:#25A6E9; line-height:75px'} Ready to Get Started? 
-      %br/  
-      %br/  
-      %br/  
-      %br/  
-      %br/  
-      %h2 When you are ready, click the Continue button to get started.
-      %br/  
-      %br/  
-      %br/ 
-      %br/  
-      %br/  
-      %br/  
-      %br/  
-      %br/  
-      %br/ 
-      %br/  
-      %br/  
-      %br/  
     .span2
   .clear

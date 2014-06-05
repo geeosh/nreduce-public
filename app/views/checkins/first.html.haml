@@ -2,7 +2,7 @@
   .right{:style => 'margin-top: 27px'}
     %ul.nav.nav-pills
       %li= link_to "Log out", logout_path, :method => :delete
-  .left{:style => 'margin-left: 25px'}= link_to image_tag('nglow.png'), '#'
+  .left{:style => 'margin-left: 25px'}= link_to image_tag('hive_45.jpg'), '#'
   .clear
 
 = semantic_form_for @checkin, :url => first_checkins_path, :html => {:class => "form-vertical first_checkin"} do |f|  
@@ -32,9 +32,8 @@
           = f.semantic_errors :goal
     .span3{:style => 'padding-top:80px'}
       %b Example Goals:
-      %p Talk to 5 users
-      %p Build Sign Up Process
-      %p Close Seed Round
+      - Settings.weekly_goal_samples.each do |g|
+        %p= g
       
   .row
     .span1.offset2{:style => 'padding-top:60px'}
@@ -42,17 +41,17 @@
     .span6
       .control-group.left
         %p
-        = label_tag :message, "Say hello to your group mates :)", :style => 'font-size:30px; line-height:45px; padding-top:40px; padding-bottom:25px', :maxlength => 255, :class => 'control-label'
+        = label_tag :message, "Say hello to your collaborators :)", :style => 'font-size:30px; line-height:45px; padding-top:40px; padding-bottom:25px', :maxlength => 255, :class => 'control-label'
         .controls.center
           = text_field_tag :message, '', :style => 'height: 30px; line-height:24px; font-size:22px', :class => "span5 checkin_start_focus", :placeholder => "Enter a fun hello message here..."
   
     .span2{:style => 'padding-top:80px'}
       %b Example Hello:
-      %p Hi, I am Joe, I am building an online incubator and am really excited to meet you all
+      %p Hi, I am #{current_user.first_name}, and am starting a new street photography project to teach basic photo skills.
       
 
   .row
     .form-controls.center{:style => 'margin-bottom: 10px; padding-top: 20px; '}
       %p{:style => 'padding-top: 10px'}
         &nbsp
-      = f.submit "Set Goal & Say Hi", :style => 'font-size:50px; line-height:60px', :class => "btn btn-success btn-large submit"
+      = f.submit "Set Goal & Say Hi", :style => 'font-size:30px; line-height:40px', :class => "btn btn-success btn-large submit"
