@@ -10,8 +10,8 @@
             = text_field_tag 'search[query]', @search[:query]
             = submit_tag 'Search', :class => 'btn'
           .clear
-      .span1.center
-        .legend Community Rating
+      / .span1.center
+      /   .legend Community Rating
     %hr/
     .row
       .span2
@@ -48,12 +48,12 @@
                 - if industry_list.present?
                   = industry_list.split(',').first(3).join(',')
               %p.one_liner= startup.one_liner
-            .span1
-              .weeks_worked.center
-                - if @num_checkins_by_startup[startup.id].present?
-                  %h4= @num_checkins_by_startup[startup.id]
+            / .span1
+            /   .weeks_worked.center
+            /     - if @num_checkins_by_startup[startup.id].present?
+            /       %h4= @num_checkins_by_startup[startup.id]
           .row
-            .span10.offset1.borderline
+            .span9.borderline
 
         .center
           = will_paginate @results
